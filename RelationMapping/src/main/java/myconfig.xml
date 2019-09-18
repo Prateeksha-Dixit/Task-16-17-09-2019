@@ -12,6 +12,8 @@
        
         <mapping  class="com.wp.Employee"/>
         <mapping  class="com.wp.Laptop"/>
+        <mapping  class="com.wp.Vehicle"/>
+        <mapping  class="com.wp.Project"/>
        
     </session-factory>
 </hibernate-configuration>

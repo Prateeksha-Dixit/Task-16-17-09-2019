@@ -1,7 +1,12 @@
 package com.wp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -14,6 +19,43 @@ public class Employee {
 	
 	@OneToOne
 	private Laptop laptop;
+	
+	@OneToMany(mappedBy="employee")
+	private List<Vehicle> vehicles=new ArrayList<Vehicle>();
+	
+	@ManyToMany
+	private List<Project> projects=new ArrayList<Project>();
+	
+	
+	
+
+	
+	public Employee(int eno, String ename, double sal, Laptop laptop, List<Vehicle> vehicles, List<Project> projects) {
+		super();
+		this.eno = eno;
+		this.ename = ename;
+		this.sal = sal;
+		this.laptop = laptop;
+		this.vehicles = vehicles;
+		this.projects = projects;
+	}
+
+	public Employee(int eno, String ename, double sal, List<Project> projects) {
+		super();
+		this.eno = eno;
+		this.ename = ename;
+		this.sal = sal;
+		this.projects = projects;
+	}
+
+	
+
+	public Employee(int eno, String ename, double sal) {
+		super();
+		this.eno = eno;
+		this.ename = ename;
+		this.sal = sal;
+	}
 
 	public Employee(int eno, String ename, double sal, Laptop laptop) {
 		super();
@@ -58,6 +100,31 @@ public class Employee {
 
 	public void setLaptop(Laptop laptop) {
 		this.laptop = laptop;
+	}
+	
+	
+
+	public List<Vehicle> getVehicles() {
+		return vehicles;
+	}
+
+	public void setVehicles(List<Vehicle> vehicles) {
+		this.vehicles = vehicles;
+	}
+
+	
+	
+	public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}
+
+	public Employee(int eno) {
+		super();
+		this.eno = eno;
 	}
 
 	@Override
